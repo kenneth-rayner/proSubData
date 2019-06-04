@@ -7,13 +7,13 @@
 
 
     @form(action = routes.BasicController.databaseInteractions()) {
-        @inputText(userForm("name"))
-        @inputText(userForm("value"))
-        <input type="submit" name="Action" value="Add">
+        @inputText(userForm("id"))
+        @inputText(userForm("amount"))
+        @inputText(userForm("year"))
+        <input type="submit" name="Action" value="Create">
+        <input type="submit" name="Action" value="Read">
         <input type="submit" name="Action" value="Update">
         <input type="submit" name="Action" value="Delete">
-        <input type="submit" name="Action" value="Create">
-        <input type="submit" name="Action" value="Create2">
-        <input type="submit" name="Action" value="Read">
+        <input type="submit" name="Action" value="Add">
     }
 }

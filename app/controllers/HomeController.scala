@@ -5,7 +5,7 @@ import javax.inject.{Inject, Singleton}
 import org.mongodb.scala.model._
 import org.mongodb.scala.{Document, MongoClient, MongoClientSettings, MongoCollection, MongoDatabase, ServerAddress}
 import play.api.mvc._
-import org.mongodb.scala._
+
 import scala.collection.JavaConverters._
 
 @Singleton

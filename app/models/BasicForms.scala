@@ -3,13 +3,15 @@ package models
 import play.api.data.Form
 import play.api.data.Forms._
 
-case class BasicForm(name: String, value: String)
+case class BasicForm(id: String, amount: String, year: String)
 
 object BasicForm {
   val form: Form[BasicForm] = Form(
     mapping(
-      "name" -> text,
-      "value" -> text
+      "id" -> text,
+      "amount" -> text,
+      "year" -> text
+
     )(BasicForm.apply)(BasicForm.unapply)
   )
 }
