@@ -1,0 +1,20 @@
+@()
+
+@main("Professional Subscriptions") {
+  <h1>Professional Subscriptions</h1>
+
+  <h2>Subscriptions:</h2>
+
+@helper.form(action = routes.HomeController.onSubmit()) {
+
+
+  <input
+          class=""
+          type="text"
+          id="inputText"
+          name="PsubName"
+  />
+<button id="submit" class="button">Submit</button>
+}
+
+}
