@@ -28,6 +28,23 @@ class BasicController @Inject()(cc: ControllerComponents) extends AbstractContro
   val myData: Future[Document] = collection.find(equal("_id", "myData")).first().head()
   val myData2: Future[Document] = collection.find(equal("_id", "myData2")).first().head()
 
+  def onPageLoad() = Action {
+
+    implicit request: Request[AnyContent] =>
+
+      val writes: List[WriteModel[_ <: Document]] = List(
+
+        DeleteOneModel(Document("_id" -> 2))
+      )
+
+      collection.bulkWrite(writes).printHeadResult("Bulk write results: ")
+
+      Ok(views.html.index())
+  }
+
+  def onSubmit() = Action {
+    Ok(views.html.index())
+  }
 
   def index() = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
@@ -97,14 +114,12 @@ class BasicController @Inject()(cc: ControllerComponents) extends AbstractContro
   def getByField(id: String, name: String) = {
 
     print(s"\n\n\n ${collection.find(equal(s"$id", s"$name")).first().printHeadResult()} \n\n\n")
-
   }
 
   //UPDATE
   def updateData(id: String, dataToUpdate: String, newData: String) = {
 
     collection.updateOne(equal("_id", s"$id"), set(dataToUpdate, s"$newData")).printHeadResult("Update Result: ")
-
   }
 
   //DELETE
