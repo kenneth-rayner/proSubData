@@ -25,9 +25,6 @@ class BasicController @Inject()(cc: ControllerComponents) extends AbstractContro
 
   val collection: MongoCollection[Document] = database.getCollection("ken")
 
-  val myData: Future[Document] = collection.find(equal("_id", "myData")).first().head()
-  val myData2: Future[Document] = collection.find(equal("_id", "myData2")).first().head()
-
   def onPageLoad() = Action {
 
     implicit request: Request[AnyContent] =>
