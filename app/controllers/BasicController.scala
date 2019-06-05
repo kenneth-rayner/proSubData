@@ -60,18 +60,33 @@ class BasicController @Inject()(cc: ControllerComponents) extends AbstractContro
   def createData() = {
     val writes: List[WriteModel[_ <: Document]] = List(
       InsertOneModel(Document(
-        "_id" -> "psub1",
-        "amount" -> "20",
+        "_id" -> "Architects",
+        "amount" -> "250",
         "year" -> "2019"
       )),
       InsertOneModel(Document(
-        "_id" -> "psub2",
-        "amount" -> "20",
+        "_id" -> "Builders",
+        "amount" -> "450",
         "year" -> "2018"
       )),
       InsertOneModel(Document(
-        "_id" -> "psub3",
-        "amount" -> "20",
+        "_id" -> "Computing",
+        "amount" -> "650",
+        "year" -> "2017"
+      )),
+      InsertOneModel(Document(
+        "_id" -> "Dentistry",
+        "amount" -> "650",
+        "year" -> "2017"
+      )),
+      InsertOneModel(Document(
+        "_id" -> "Editing",
+        "amount" -> "650",
+        "year" -> "2017"
+      )),
+      InsertOneModel(Document(
+        "_id" -> "Forestry",
+        "amount" -> "650",
         "year" -> "2017"
       ))
     )
@@ -96,13 +111,13 @@ class BasicController @Inject()(cc: ControllerComponents) extends AbstractContro
   def deleteFromRepo(formDataId: String): Unit = {
     val doc: Document = Document("_id" -> formDataId)
 
-    collection.deleteOne(doc).results
+    collection.deleteOne(doc).results()
   }
 
   ///ADD
   def addToRepo(formDataId: String, formDataAmount: String, formDataYear: String): Unit = {
     val doc: Document = Document("_id" -> formDataId, "amount" -> formDataAmount, "year" -> formDataYear)
 
-    collection.insertOne(doc).results
+    collection.insertOne(doc).results()
   }
 }
